@@ -1,7 +1,7 @@
 [project]
 authors = [{name = "Wouter-Michiel Vierdag", email = "w-mv@hotmail.com"}]
 dependencies = []
-name = "PythonProject"
+name = "ngff-transform-protocols"
 requires-python = ">= 3.11"
 version = "0.1.0"
 
@@ -14,6 +14,6 @@ channels = ["conda-forge"]
 platforms = ["win-64"]
 
 [tool.pixi.pypi-dependencies]
-pythonproject = { path = ".", editable = true }
+ngff-transform-protocols = { path = ".", editable = true }
 
 [tool.pixi.tasks]
