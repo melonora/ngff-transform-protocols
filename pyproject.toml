@@ -1,0 +1,19 @@
+[project]
+authors = [{name = "Wouter-Michiel Vierdag", email = "w-mv@hotmail.com"}]
+dependencies = []
+name = "PythonProject"
+requires-python = ">= 3.11"
+version = "0.1.0"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tool.pixi.pypi-dependencies]
+pythonproject = { path = ".", editable = true }
+
+[tool.pixi.tasks]
