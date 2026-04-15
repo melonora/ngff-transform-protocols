@@ -20,10 +20,15 @@ ngff-transform-protocols = { path = ".", editable = true }
 
 [tool.pixi.feature.test.dependencies]
 pytest = "*"
-ome-zarr-models = "*"
+
+[tool.pixi.feature.test.pypi-dependencies]
+ome-zarr-models = { path = "../ome-zarr-models-py", editable = true }
 
 [tool.pixi.feature.visualization.dependencies]
 networkx = "*"
+
+[tool.pixi.feature.test.tasks]
+test = "pytest"
 
 [tool.pixi.environments]
 test = { features = ["test", "visualization"], solve-group = "default" }
