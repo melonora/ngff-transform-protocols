@@ -1,10 +1,49 @@
 from typing import Protocol, runtime_checkable, Sequence, Literal
 
 @runtime_checkable
+class AxisLike(Protocol):
+    """
+    Structural contract for a single axis in a coordinate system.
+    Matches `Axis` and any duck-typed equivalent.
+    """
+    name: str | None
+    type: str | None
+    discrete: bool | None
+    # TODO: should we keep this broad?
+    unit: object
+    longName: str | None
+
+
+@runtime_checkable
+class CoordinateSystemLike(Protocol):
+    """
+    Structural contract for a full coordinate system.
+    Matches `CoordinateSystem` and any duck-typed equivalent.
+    """
+    name: str
+    axes: tuple[AxisLike, ...]
+
+    @property
+    def ndim(self) -> int: ...
+
+
+@runtime_checkable
+class CoordinateSystemIdentifiable(Protocol):
+    """
+    Structural contract for a reference to a coordinate system defined
+    elsewhere — carries a name and an optional path.
+    Matches `CoordinateSystemIdentifier`.
+    """
+    name: str
+    path: str | None
+
+TCoordSysIdentifier = CoordinateSystemIdentifiable| str | None
+
+@runtime_checkable
 class TransformProtocol(Protocol):
     type: str
-    input: str | None
-    output: str | None
+    input: TCoordSysIdentifier
+    output: TCoordSysIdentifier
     name: str | None
 
     @property
@@ -33,8 +72,6 @@ class AffineConvertible(Protocol):
 class PointTransformable(Protocol):
     def transform_point(self, point: Sequence[float]) -> tuple[float, ...]: ...
 
-
-# ── Concrete transform protocols ──────────────────────────────────────────────
 
 @runtime_checkable
 class IdentityProtocol(TransformProtocol, Protocol):
