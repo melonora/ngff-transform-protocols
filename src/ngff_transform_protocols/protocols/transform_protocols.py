@@ -45,7 +45,9 @@ class TransformProtocol(Protocol):
     input: TCoordSysIdentifier
     output: TCoordSysIdentifier
     name: str | None
-    has_inverse: bool
+
+    @property
+    def has_inverse(self) -> bool: ...
 
     def get_inverse(self) -> "TransformProtocol": ...
 

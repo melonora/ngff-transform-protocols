@@ -18,20 +18,21 @@ ngff-transform-protocols = { path = ".", editable = true }
 
 [tool.pixi.tasks]
 
-[tool.pixi.feature.test.dependencies]
-pytest-mypy-plugins = ">=4.0.1,<5"
+[tool.pixi.feature.test_ome_zarr_models_py.dependencies]
 pytest = ">=9.0.3,<10"
+pytest-mypy = ">=0.10.3,<0.11"
 
-[tool.pixi.feature.test.pypi-dependencies]
+[tool.pixi.feature.test_ome_zarr_models_py.pypi-dependencies]
 ome-zarr-models = { path = "../ome-zarr-models-py", editable = true }
 
 [tool.pixi.feature.visualization.dependencies]
 networkx = ">=3.6.1,<4"
 
-[tool.pixi.feature.test.tasks]
-test = "pytest"
+[tool.pixi.feature.test_ome_zarr_models_py.tasks]
+test = "pytest tests/py/"
+test-mypy-ome-zarr-models-py = "pytest --mypy tests/mypy_ome_zarr_models_py/"
 
 [tool.pixi.environments]
-test = { features = ["test", "visualization"], solve-group = "default" }
+test-ome-zarr-models = { features = ["test_ome_zarr_models_py", "visualization"], solve-group = "default" }
 visualization = { features = ["visualization"], solve-group = "default" }
 
