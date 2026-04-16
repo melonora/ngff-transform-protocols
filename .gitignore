@@ -3,4 +3,7 @@
 !.pixi/config.toml
 
 # IDE
-.idea/
+.idea/*
+
+__pycache__
+*.pyc

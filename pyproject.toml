@@ -19,13 +19,14 @@ ngff-transform-protocols = { path = ".", editable = true }
 [tool.pixi.tasks]
 
 [tool.pixi.feature.test.dependencies]
-pytest = "*"
+pytest-mypy-plugins = ">=4.0.1,<5"
+pytest = ">=9.0.3,<10"
 
 [tool.pixi.feature.test.pypi-dependencies]
 ome-zarr-models = { path = "../ome-zarr-models-py", editable = true }
 
 [tool.pixi.feature.visualization.dependencies]
-networkx = "*"
+networkx = ">=3.6.1,<4"
 
 [tool.pixi.feature.test.tasks]
 test = "pytest"
